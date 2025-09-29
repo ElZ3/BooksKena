@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/aguafina_script</item>
+        <item>@font/anton</item>
+        <item>@font/are_you_serious</item>
+        <item>@font/mandali</item>
+        <item>@font/montserrat_alternates_bold_italic</item>
+    </array>
+</resources>
