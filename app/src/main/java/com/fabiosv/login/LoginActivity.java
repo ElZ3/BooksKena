@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        if (usuario.equals("admin") && password.equals("123")) {
+        if (usuario.equals("fabio") && password.equals("123")) {
             Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
