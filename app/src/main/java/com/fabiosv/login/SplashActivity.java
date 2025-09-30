@@ -6,12 +6,13 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_DURATION = 2500;
+    private static final int DURACION_SPLASH = 2500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +20,41 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.splash_activity);
 
         ImageView logo = findViewById(R.id.imageView2);
+        LinearLayout contenedorSplash = findViewById(R.id.splash);
 
-        // Carga la animación de fade-in
-        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        logo.startAnimation(fadeIn);
+        iniciarAnimacionesMejoradas(logo, contenedorSplash);
+    }
 
-        // Pasa a la siguiente actividad después de la duración del splash
+    private void iniciarAnimacionesMejoradas(ImageView logo, LinearLayout contenedor) {
+        Animation fadeInContenedor = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        contenedor.startAnimation(fadeInContenedor);
+
         new Handler().postDelayed(() -> {
-            // Corrige la intención para que vaya a ActivityMain
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(intent);
-            // No uses overridePendingTransition aquí, ya que a menudo causa un corte visual
-            // Simplemente finaliza esta actividad
-            finish();
-        }, SPLASH_DURATION);
+            Animation escalaLogo = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+            Animation fadeInLogo = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+
+            logo.startAnimation(escalaLogo);
+            logo.startAnimation(fadeInLogo);
+
+        }, 300);
+
+        new Handler().postDelayed(() -> {
+            navegarAMainActivity();
+        }, DURACION_SPLASH);
+    }
+
+    private void navegarAMainActivity() {
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        findViewById(R.id.imageView2).clearAnimation();
+        findViewById(R.id.splash).clearAnimation();
     }
 }

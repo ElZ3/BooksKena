@@ -21,11 +21,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
 
-        <activity android:name=".MainActivity" />
 
-        <activity android:name=".PrincipalActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PrincipalActivity"
+            android:exported="true" />
 
 
         <meta-data

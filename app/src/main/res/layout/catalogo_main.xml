@@ -4,13 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="201dp"
-        app:srcCompat="@drawable/loginbook"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="52dp" />
-</LinearLayout>
+    android:orientation="horizontal"/>
