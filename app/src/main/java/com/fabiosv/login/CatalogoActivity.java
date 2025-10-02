@@ -35,7 +35,6 @@ public class CatalogoActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.catalogo_main);
 
-        // Aplica el padding para las barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.catalogo_libros_principal), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -59,30 +58,24 @@ public class CatalogoActivity extends AppCompatActivity {
     }
 
     private void configurarAnimacionesEntrada() {
-        // Animación de entrada del contenedor principal
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         contenedorPrincipal.startAnimation(fadeIn);
 
-        // Secuencia de animaciones escalonadas
         new Handler().postDelayed(() -> {
-            // 1. Título con slide down
             Animation slideDown = AnimationUtils.loadAnimation(this, R.anim.slide_in_down);
             tituloBienvenida.startAnimation(slideDown);
 
-            // 2. Subtítulo con fade in
             new Handler().postDelayed(() -> {
                 Animation fadeInSubtitulo = AnimationUtils.loadAnimation(this, R.anim.fade_in);
                 subtituloBienvenida.startAnimation(fadeInSubtitulo);
             }, 200);
 
-            // 3. Campo de búsqueda y botón
             new Handler().postDelayed(() -> {
                 Animation slideUpSearch = AnimationUtils.loadAnimation(this, R.anim.slide_in_up);
                 campoBuscar.startAnimation(slideUpSearch);
                 botonBuscar.startAnimation(slideUpSearch);
             }, 400);
 
-            // 4. Botones del pie de página
             new Handler().postDelayed(() -> {
                 Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
                 botonVolverInicio.startAnimation(scaleUp);
@@ -93,11 +86,9 @@ public class CatalogoActivity extends AppCompatActivity {
     }
 
     private void configurarBotones() {
-        // Botón Volver al Inicio
         botonVolverInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Animación de click
                 Animation scaleClick = AnimationUtils.loadAnimation(CatalogoActivity.this, R.anim.scale_click);
                 botonVolverInicio.startAnimation(scaleClick);
 
@@ -107,22 +98,18 @@ public class CatalogoActivity extends AppCompatActivity {
             }
         });
 
-        // Botón Ver Carrito
         botonVerCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Animación de click
                 Animation scaleClick = AnimationUtils.loadAnimation(CatalogoActivity.this, R.anim.scale_click);
                 botonVerCarrito.startAnimation(scaleClick);
 
                 new Handler().postDelayed(() -> {
-                    // Aquí puedes navegar a la actividad del carrito
                     Toast.makeText(CatalogoActivity.this, "Funcionalidad de carrito próximamente", Toast.LENGTH_SHORT).show();
                 }, 200);
             }
         });
 
-        // Botón Buscar
         botonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +125,6 @@ public class CatalogoActivity extends AppCompatActivity {
             }
         });
 
-        // Configurar botones de categorías
         configurarBotonesCategorias();
     }
 
@@ -157,7 +143,6 @@ public class CatalogoActivity extends AppCompatActivity {
                 boton.startAnimation(fadeInBoton);
             }, 600 + delay);
 
-            // Configurar click listener para cada categoría
             boton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -172,7 +157,6 @@ public class CatalogoActivity extends AppCompatActivity {
     }
 
     private void configurarBotonAtras() {
-        // Manejar el gesto de retroceso
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -182,7 +166,6 @@ public class CatalogoActivity extends AppCompatActivity {
     }
 
     private void volverAPrincipal() {
-        // Animación de salida
         Animation slideOut = AnimationUtils.loadAnimation(this, R.anim.slide_out_left);
         contenedorPrincipal.startAnimation(slideOut);
 

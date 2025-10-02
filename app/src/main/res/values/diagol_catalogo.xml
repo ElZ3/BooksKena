@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@android:color/white">
+
+    <!-- Header del Modal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Detalles del Producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#800000" />
+
+        <ImageButton
+            android:id="@+id/btnCerrarModal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Cerrar" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="#E0E0E0" />
+
+    <!-- Imagen del Producto -->
+    <ImageView
+        android:id="@+id/imgProductoModal"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="15dp"
+        android:background="#F5F5F5"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/jordan"
+        tools:srcCompat="@drawable/jordan" />
+
+    <!-- Nombre del Producto -->
+    <TextView
+        android:id="@+id/txtNombreProductoModal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nike Jordan"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Precio -->
+    <TextView
+        android:id="@+id/txtPrecioProductoModal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$85.00"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#FF5722"
+        android:layout_marginBottom="15dp" />
+
+    <!-- Descripción -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/txtDescripcionProductoModal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bonitos zapatos originales con excelente calidad y diseño moderno. Perfectos para cualquier ocasión."
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Disponibilidad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disponibilidad: "
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/txtDisponibilidadModal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En Stock"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4CAF50" />
+
+    </LinearLayout>
+
+    <!-- Cantidad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp" />
+
+        <Button
+            android:id="@+id/btnDisminuirCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:backgroundTint="#666666"
+            android:text="-"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtCantidad"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btnAumentarCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:backgroundTint="#666666"
+            android:text="+"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <!-- Botones de Acción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAgregarAlCarrito"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:text="Agregar al Carrito"
+            android:textStyle="bold"
+            android:backgroundTint="#4CAF50"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnComprarAhora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:text="Comprar Ahora"
+            android:textStyle="bold"
+            android:backgroundTint="#800000"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
