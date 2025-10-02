@@ -2,6 +2,457 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/catalogo_libros_principal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"/>
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#F5F3E4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F5F3E4"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/titulo_bienvenida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Bienvenido a nuestra biblioteca"
+            android:textColor="#50B8F8"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/subtitulo_bienvenida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Descubre historias que te llenen de intriga o te sorprendan con sus versos"
+            android:textColor="#68B1F4"
+            android:textSize="14sp"
+            android:padding="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="16dp">
+
+            <EditText
+                android:id="@+id/campo_buscar_libros"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/fondo_redondeado"
+                android:hint="Buscar libro..."
+                android:padding="12dp"
+                android:textColor="#50B8F8"
+                android:textColorHint="#68B1F4" />
+
+            <Button
+                android:id="@+id/boton_buscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/boton_buscar_redondeado"
+                android:text="Buscar"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Categorías -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#D7D1B9"
+        android:paddingTop="1dp"
+        android:paddingBottom="3dp">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/boton_ficcion"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/boton_categoria_redondeado"
+                    android:text="Ficción"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/boton_poesia"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/boton_categoria_redondeado"
+                    android:text="Poesía"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/boton_misterio"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/boton_categoria_redondeado"
+                    android:text="Misterio"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/boton_romance"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/boton_categoria_redondeado"
+                    android:text="Romance"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/boton_biografias"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/boton_categoria_redondeado"
+                    android:text="Biografías"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Lista de Libros -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F5F3E4"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Libro 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="151dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/fondo_item_redondeado"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imagen_libro_1"
+                    android:layout_width="80dp"
+                    android:layout_height="122dp"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/libro1"
+                    tools:srcCompat="@drawable/libro1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp">
+
+                    <TextView
+                        android:id="@+id/titulo_libro_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Las Aventuras de Nico y Nacho"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/autor_libro_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pablo Herrera R."
+                        android:textColor="#68B1F4"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/precio_libro_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="$18.99"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/boton_agregar_libro_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/boton_agregar_redondeado"
+                        android:text="Agregar"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Libro 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="151dp"
+                android:orientation="horizontal"
+                android:background="@drawable/fondo_item_redondeado"
+                android:layout_margin="8dp"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imagen_libro_2"
+                    android:layout_width="80dp"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    app:srcCompat="@drawable/libro2"
+                    tools:srcCompat="@drawable/libro2" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp">
+
+                    <TextView
+                        android:id="@+id/titulo_libro_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Visions Of Tomorrow"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/autor_libro_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Leo Waen"
+                        android:textColor="#68B1F4"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/precio_libro_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$22.50"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp" />
+
+                    <Button
+                        android:id="@+id/boton_agregar_libro_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/boton_agregar_redondeado"
+                        android:text="Agregar"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Libro 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="151dp"
+                android:orientation="horizontal"
+                android:background="@drawable/fondo_item_redondeado"
+                android:layout_margin="8dp"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imagen_libro_3"
+                    android:layout_width="80dp"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    app:srcCompat="@drawable/libro3"
+                    tools:srcCompat="@drawable/libro3" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp">
+
+                    <TextView
+                        android:id="@+id/titulo_libro_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="El Reto"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/autor_libro_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Maria Serrano Burgos y David Sierra Liston"
+                        android:textColor="#68B1F4"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/precio_libro_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$19.99"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp" />
+
+                    <Button
+                        android:id="@+id/boton_agregar_libro_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/boton_agregar_redondeado"
+                        android:text="Agregar"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Libro 4 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="151dp"
+                android:orientation="horizontal"
+                android:background="@drawable/fondo_item_redondeado"
+                android:layout_margin="8dp"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/imagen_libro_4"
+                    android:layout_width="80dp"
+                    android:layout_height="110dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/borde_redondeado_imagen"
+                    app:srcCompat="@drawable/libro4"
+                    tools:srcCompat="@drawable/libro4" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp">
+
+                    <TextView
+                        android:id="@+id/titulo_libro_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dracula"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/autor_libro_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bran Stoker"
+                        android:textColor="#68B1F4"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/precio_libro_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$19.99"
+                        android:textColor="#50B8F8"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp" />
+
+                    <Button
+                        android:id="@+id/boton_agregar_libro_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/boton_agregar_redondeado"
+                        android:text="Agregar"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Pie de página -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D7D1B9"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/boton_ver_carrito"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/boton_pie_redondeado"
+            android:text="Ver Carrito"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/boton_volver_inicio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/boton_pie_redondeado"
+            android:text="Volver al Inicio"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
