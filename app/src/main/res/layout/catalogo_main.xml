@@ -228,8 +228,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/boton_agregar_redondeado"
                         android:text="Ver mas"
-                        android:textColor="#FFFFFF"
-                        android:columa="2" />
+                        android:textColor="#FFFFFF" />
 
 
                 </LinearLayout>
