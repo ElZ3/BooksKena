@@ -1,13 +1,17 @@
 package com.fabiosv.login;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +32,10 @@ public class CatalogoActivity extends AppCompatActivity {
     private Button botonBuscar;
     private Button botonVolverInicio;
     private Button botonVerCarrito;
+
+    // Botones de libros
+    private Button botonVerDetalles1, botonVerDetalles2, botonVerDetalles3, botonVerDetalles4;
+    private Button botonAgregar1, botonAgregar2, botonAgregar3, botonAgregar4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,17 @@ public class CatalogoActivity extends AppCompatActivity {
         botonBuscar = findViewById(R.id.boton_buscar);
         botonVolverInicio = findViewById(R.id.boton_volver_inicio);
         botonVerCarrito = findViewById(R.id.boton_ver_carrito);
+
+        // Inicializar botones de libros
+        botonVerDetalles1 = findViewById(R.id.boton_ver_detalles_libro_1);
+        botonVerDetalles2 = findViewById(R.id.boton_ver_detalles_libro_2);
+        botonVerDetalles3 = findViewById(R.id.boton_ver_detalles_libro_3);
+        botonVerDetalles4 = findViewById(R.id.boton_ver_detalles_libro_4);
+
+        botonAgregar1 = findViewById(R.id.boton_agregar_libro_1);
+        botonAgregar2 = findViewById(R.id.boton_agregar_libro_2);
+        botonAgregar3 = findViewById(R.id.boton_agregar_libro_3);
+        botonAgregar4 = findViewById(R.id.boton_agregar_libro_4);
     }
 
     private void configurarAnimacionesEntrada() {
@@ -126,6 +145,7 @@ public class CatalogoActivity extends AppCompatActivity {
         });
 
         configurarBotonesCategorias();
+        configurarBotonesLibros();
     }
 
     private void configurarBotonesCategorias() {
@@ -136,7 +156,7 @@ public class CatalogoActivity extends AppCompatActivity {
 
         for (int i = 0; i < idsBotonesCategorias.length; i++) {
             Button boton = findViewById(idsBotonesCategorias[i]);
-            final int delay = i * 100; // Animación escalonada
+            final int delay = i * 100;
 
             new Handler().postDelayed(() -> {
                 Animation fadeInBoton = AnimationUtils.loadAnimation(this, R.anim.fade_in);
@@ -154,6 +174,181 @@ public class CatalogoActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void configurarBotonesLibros() {
+        // Configurar botones "Ver Detalles"
+        botonVerDetalles1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDetallesLibro(
+                        "Las Aventuras de Nico y Nacho: El Misterio de la Laguna",
+                        "Pablo Herrera R.",
+                        "$18.99",
+                        "Únete a Nico y Nacho en esta emocionante aventura donde descubrirán los secretos ocultos en la laguna misteriosa. Una historia llena de amistad, valentía y descubrimientos que cautivará a lectores de todas las edades.",
+                        R.drawable.libro1
+                );
+            }
+        });
+
+        botonVerDetalles2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDetallesLibro(
+                        "Visions Of Tomorrow",
+                        "Leo Waen",
+                        "$22.50",
+                        "Una visión futurista de la humanidad y la tecnología. Explora los límites de la innovación y el impacto de las decisiones humanas en el destino de nuestra civilización.",
+                        R.drawable.libro2
+                );
+            }
+        });
+
+        botonVerDetalles3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDetallesLibro(
+                        "El Reto",
+                        "Maria Serrano Burgos y David Sierra Liston",
+                        "$19.99",
+                        "Una historia inspiradora sobre superación personal y trabajo en equipo. Descubre cómo los desafíos pueden convertirse en las mayores oportunidades de crecimiento.",
+                        R.drawable.libro3
+                );
+            }
+        });
+
+        botonVerDetalles4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDetallesLibro(
+                        "Dracula",
+                        "Bram Stoker",
+                        "$19.99",
+                        "El clásico de terror que definió el género vampírico. Una obra maestra de la literatura gótica que continúa fascinando a generaciones de lectores.",
+                        R.drawable.libro4
+                );
+            }
+        });
+
+        // Configurar botones "Agregar" (funcionalidad básica por ahora)
+        botonAgregar1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregarAlCarritoRapido("Las Aventuras de Nico y Nacho");
+            }
+        });
+
+        botonAgregar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregarAlCarritoRapido("Visions Of Tomorrow");
+            }
+        });
+
+        botonAgregar3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregarAlCarritoRapido("El Reto");
+            }
+        });
+
+        botonAgregar4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                agregarAlCarritoRapido("Dracula");
+            }
+        });
+    }
+
+    private void mostrarDetallesLibro(String titulo, String autor, String precio, String descripcion, int imagenRes) {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.detalles_libro);
+        dialog.setCancelable(true);
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setLayout(
+                    (int)(getResources().getDisplayMetrics().widthPixels * 0.95),
+                    android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+        }
+
+        // Obtener referencias de las vistas del modal
+        ImageView imagenLibro = dialog.findViewById(R.id.imagen_libro_detalles);
+        TextView textoTitulo = dialog.findViewById(R.id.texto_titulo_libro_detalles);
+        TextView textoAutor = dialog.findViewById(R.id.texto_autor_detalles);
+        TextView textoPrecio = dialog.findViewById(R.id.texto_precio_detalles);
+        TextView textoDescripcion = dialog.findViewById(R.id.texto_descripcion_detalles);
+        final TextView textoCantidad = dialog.findViewById(R.id.texto_cantidad_detalles);
+
+        ImageButton botonCerrar = dialog.findViewById(R.id.boton_cerrar_detalles);
+        Button botonDisminuir = dialog.findViewById(R.id.boton_disminuir_cantidad);
+        Button botonAumentar = dialog.findViewById(R.id.boton_aumentar_cantidad);
+        Button botonAgregarCarrito = dialog.findViewById(R.id.boton_agregar_carrito_detalles);
+        Button botonComprarAhora = dialog.findViewById(R.id.boton_comprar_ahora_detalles);
+
+        // Configurar los datos del libro
+        imagenLibro.setImageResource(imagenRes);
+        textoTitulo.setText(titulo);
+        textoAutor.setText(autor);
+        textoPrecio.setText(precio);
+        textoDescripcion.setText(descripcion);
+
+        final int[] cantidad = {1};
+
+        // Configurar listeners
+        botonCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        botonDisminuir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cantidad[0] > 1) {
+                    cantidad[0]--;
+                    textoCantidad.setText(String.valueOf(cantidad[0]));
+                }
+            }
+        });
+
+        botonAumentar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cantidad[0] < 99) {
+                    cantidad[0]++;
+                    textoCantidad.setText(String.valueOf(cantidad[0]));
+                }
+            }
+        });
+
+        botonAgregarCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CatalogoActivity.this,
+                        cantidad[0] + "x " + titulo + " agregado al carrito",
+                        Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        botonComprarAhora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CatalogoActivity.this,
+                        "Comprando " + cantidad[0] + "x " + titulo,
+                        Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void agregarAlCarritoRapido(String nombreLibro) {
+        Toast.makeText(this, nombreLibro + " agregado al carrito", Toast.LENGTH_SHORT).show();
     }
 
     private void configurarBotonAtras() {

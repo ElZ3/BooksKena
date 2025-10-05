@@ -1,167 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@android:color/white">
+    android:padding="12dp"
+    android:background="#3D4D55">
 
     <!-- Header del Modal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Detalles del Producto"
-            android:textSize="20sp"
+            android:text="Detalles del Libro"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#800000" />
+            android:textColor="#D3C8B9" />
 
         <ImageButton
-            android:id="@+id/btnCerrarModal"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
+            android:id="@+id/boton_cerrar_detalles"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/boton_categoria_redondeado"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:contentDescription="Cerrar" />
+            android:contentDescription="Cerrar"
+            android:padding="6dp"
+            app:tint="#3D4D55" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:background="#E0E0E0" />
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="12dp"
+        android:background="#A79E9C" />
 
-    <!-- Imagen del Producto -->
+    <!-- Imagen del Libro -->
     <ImageView
-        android:id="@+id/imgProductoModal"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="15dp"
-        android:background="#F5F5F5"
+        android:id="@+id/imagen_libro_detalles"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/borde_redondeado_imagen"
         android:scaleType="centerCrop"
-        tools:src="@drawable/libro1" />
+        app:srcCompat="@drawable/libro1"
+        tools:srcCompat="@drawable/libro1" />
 
-    <!-- Nombre del Producto -->
+    <!-- Nombre del Libro -->
     <TextView
-        android:id="@+id/txtNombreProductoModal"
-        android:layout_width="wrap_content"
+        android:id="@+id/texto_titulo_libro_detalles"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nike Jordan"
-        android:textSize="22sp"
+        android:text="Las Aventuras de Nico y Nacho: El Misterio de la Laguna"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="#000000"
-        android:layout_marginBottom="10dp" />
+        android:textColor="#D3C8B9"
+        android:gravity="center"
+        android:layout_marginBottom="6dp"
+        android:lineSpacingExtra="2sp" />
+
+    <!-- Autor -->
+    <TextView
+        android:id="@+id/texto_autor_detalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pablo Herrera R."
+        android:textSize="14sp"
+        android:textColor="#B58863"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
 
     <!-- Precio -->
     <TextView
-        android:id="@+id/txtPrecioProductoModal"
-        android:layout_width="wrap_content"
+        android:id="@+id/texto_precio_detalles"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="$85.00"
-        android:textSize="28sp"
+        android:text="$18.99"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#FF5722"
-        android:layout_marginBottom="15dp" />
+        android:textColor="#B58863"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
 
     <!-- Descripción -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Descripción:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        android:layout_marginBottom="5dp" />
-
-    <TextView
-        android:id="@+id/txtDescripcionProductoModal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bonitos zapatos originales con excelente calidad y diseño moderno. Perfectos para cualquier ocasión."
+        android:text="Descripción:"
         android:textSize="14sp"
-        android:textColor="#333333"
-        android:layout_marginBottom="10dp" />
+        android:textStyle="bold"
+        android:textColor="#D3C8B9"
+        android:layout_marginBottom="4dp" />
 
-    <!-- Disponibilidad -->
+    <TextView
+        android:id="@+id/texto_descripcion_detalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Únete a Nico y Nacho en esta emocionante aventura donde descubrirán los secretos ocultos en la laguna misteriosa. Una historia llena de amistad, valentía y descubrimientos que cautivará a lectores de todas las edades."
+        android:textSize="12sp"
+        android:textColor="#A79E9C"
+        android:lineSpacingExtra="2sp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Información Adicional -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical"
+        android:background="@drawable/fondo_item_redondeado_oscuro"
+        android:padding="8dp"
+        android:layout_marginBottom="12dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Disponibilidad: "
-            android:textSize="14sp"
-            android:textColor="#666666" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
 
-        <TextView
-            android:id="@+id/txtDisponibilidadModal"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Disponibilidad:"
+                android:textSize="12sp"
+                android:textColor="#D3C8B9" />
+
+            <TextView
+                android:id="@+id/texto_disponibilidad_detalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="En Stock"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#B58863" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="En Stock"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#4CAF50" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Páginas:"
+                android:textSize="12sp"
+                android:textColor="#D3C8B9" />
+
+            <TextView
+                android:id="@+id/texto_paginas_detalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="128 páginas"
+                android:textSize="12sp"
+                android:textColor="#A79E9C" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Género:"
+                android:textSize="12sp"
+                android:textColor="#D3C8B9" />
+
+            <TextView
+                android:id="@+id/texto_genero_detalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aventura Infantil"
+                android:textSize="12sp"
+                android:textColor="#A79E9C" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Cantidad -->
+    <!-- Selector de Cantidad -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="12dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cantidad: "
-            android:textSize="16sp"
+            android:text="Cantidad:"
+            android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginEnd="10dp" />
+            android:textColor="#D3C8B9"
+            android:layout_marginEnd="12dp" />
 
         <Button
-            android:id="@+id/btnDisminuirCantidad"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#666666"
+            android:id="@+id/boton_disminuir_cantidad"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/boton_categoria_redondeado"
             android:text="-"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textColor="#3D4D55"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
 
         <TextView
-            android:id="@+id/txtCantidad"
-            android:layout_width="60dp"
+            android:id="@+id/texto_cantidad_detalles"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp" />
+            android:textColor="#D3C8B9"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
 
         <Button
-            android:id="@+id/btnAumentarCantidad"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#666666"
+            android:id="@+id/boton_aumentar_cantidad"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/boton_categoria_redondeado"
             android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textColor="#3D4D55"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
 
     </LinearLayout>
 
@@ -172,26 +258,28 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnAgregarAlCarrito"
+            android:id="@+id/boton_agregar_carrito_detalles"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="6dp"
             android:text="Agregar al Carrito"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:background="#4CAF50"
-            android:textColor="@android:color/white" />
+            android:background="@drawable/boton_agregar_redondeado"
+            android:textColor="#3D4D55" />
 
         <Button
-            android:id="@+id/btnComprarAhora"
+            android:id="@+id/boton_comprar_ahora_detalles"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="6dp"
             android:text="Comprar Ahora"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:background="#800000"
-            android:textColor="@android:color/white" />
+            android:background="@drawable/boton_pie_redondeado"
+            android:textColor="#3D4D55" />
 
     </LinearLayout>
 

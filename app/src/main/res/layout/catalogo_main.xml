@@ -23,7 +23,7 @@
             android:gravity="center"
             android:text="Bienvenido a nuestra biblioteca"
             android:textColor="#D3C8B9"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:padding="8dp" />
 
@@ -34,7 +34,7 @@
             android:gravity="center"
             android:text="Descubre historias que te llenen de intriga o te sorprendan con sus versos"
             android:textColor="#A79E9C"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:padding="8dp" />
 
         <LinearLayout
@@ -42,27 +42,30 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:paddingTop="16dp">
+            android:paddingTop="12dp">
 
             <EditText
                 android:id="@+id/campo_buscar_libros"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/fondo_redondeado_oscuro"
                 android:hint="Buscar libro..."
-                android:padding="12dp"
-                android:textColor="#D3C8B9"
-                android:textColorHint="#A79E9C" />
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#A79E9C"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/boton_buscar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/boton_buscar_redondeado"
                 android:text="Buscar"
                 android:textColor="#3D4D55"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -92,62 +95,62 @@
 
                 <Button
                     android:id="@+id/boton_ficcion"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
                     android:layout_margin="4dp"
                     android:background="@drawable/boton_categoria_redondeado"
                     android:text="Ficción"
                     android:textAllCaps="false"
                     android:textColor="#3D4D55"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/boton_poesia"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
                     android:layout_margin="4dp"
                     android:background="@drawable/boton_categoria_redondeado"
                     android:text="Poesía"
                     android:textAllCaps="false"
                     android:textColor="#3D4D55"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/boton_misterio"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
                     android:layout_margin="4dp"
                     android:background="@drawable/boton_categoria_redondeado"
                     android:text="Misterio"
                     android:textAllCaps="false"
                     android:textColor="#3D4D55"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/boton_romance"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
                     android:layout_margin="4dp"
                     android:background="@drawable/boton_categoria_redondeado"
                     android:text="Romance"
                     android:textAllCaps="false"
                     android:textColor="#3D4D55"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/boton_biografias"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_width="90dp"
+                    android:layout_height="36dp"
                     android:layout_margin="4dp"
                     android:background="@drawable/boton_categoria_redondeado"
                     android:text="Biografías"
                     android:textAllCaps="false"
                     android:textColor="#3D4D55"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -170,17 +173,16 @@
             <!-- Libro 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_height="140dp"
+                android:layout_margin="6dp"
                 android:background="@drawable/fondo_item_redondeado_oscuro"
                 android:orientation="horizontal"
-                android:padding="12dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/imagen_libro_1"
-                    android:layout_width="80dp"
-                    android:layout_height="122dp"
-                    android:background="@drawable/borde_redondeado_imagen"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/libro1"
                     tools:srcCompat="@drawable/libro1" />
@@ -190,7 +192,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingStart="16dp">
+                    android:paddingStart="12dp">
 
                     <TextView
                         android:id="@+id/titulo_libro_1"
@@ -198,7 +200,7 @@
                         android:layout_height="wrap_content"
                         android:text="Las Aventuras de Nico y Nacho"
                         android:textColor="#D3C8B9"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -207,45 +209,46 @@
                         android:layout_height="wrap_content"
                         android:text="Pablo Herrera R."
                         android:textColor="#A79E9C"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/precio_libro_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:paddingTop="6dp"
                         android:text="$18.99"
                         android:textColor="#B58863"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="8dp">
+                        android:paddingTop="6dp">
 
                         <Button
                             android:id="@+id/boton_agregar_libro_1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_agregar_redondeado"
                             android:text="Agregar"
                             android:textColor="#3D4D55"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/boton_ver_detalles_libro_1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginStart="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_detalles_redondeado"
-                            android:text="Ver Detalles"
+                            android:text="Detalles"
                             android:textColor="#3D4D55"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -257,18 +260,17 @@
             <!-- Libro 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="140dp"
+                android:layout_margin="6dp"
                 android:background="@drawable/fondo_item_redondeado_oscuro"
-                android:layout_margin="8dp"
-                android:padding="12dp">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/imagen_libro_2"
-                    android:layout_width="80dp"
-                    android:layout_height="110dp"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/borde_redondeado_imagen"
                     app:srcCompat="@drawable/libro2"
                     tools:srcCompat="@drawable/libro2" />
 
@@ -277,7 +279,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingStart="16dp">
+                    android:paddingStart="12dp">
 
                     <TextView
                         android:id="@+id/titulo_libro_2"
@@ -285,7 +287,7 @@
                         android:layout_height="wrap_content"
                         android:text="Visions Of Tomorrow"
                         android:textColor="#D3C8B9"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -294,45 +296,46 @@
                         android:layout_height="wrap_content"
                         android:text="Leo Waen"
                         android:textColor="#A79E9C"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/precio_libro_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:paddingTop="6dp"
                         android:text="$22.50"
                         android:textColor="#B58863"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="8dp">
+                        android:paddingTop="6dp">
 
                         <Button
                             android:id="@+id/boton_agregar_libro_2"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_agregar_redondeado"
                             android:text="Agregar"
                             android:textColor="#3D4D55"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/boton_ver_detalles_libro_2"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginStart="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_detalles_redondeado"
-                            android:text="Ver Detalles"
+                            android:text="Detalles"
                             android:textColor="#3D4D55"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -344,17 +347,16 @@
             <!-- Libro 3 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_height="140dp"
+                android:layout_margin="6dp"
                 android:background="@drawable/fondo_item_redondeado_oscuro"
                 android:orientation="horizontal"
-                android:padding="12dp">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/imagen_libro_3"
-                    android:layout_width="80dp"
-                    android:layout_height="110dp"
-                    android:background="@drawable/borde_redondeado_imagen"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/libro3"
                     tools:srcCompat="@drawable/libro3" />
@@ -364,7 +366,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingStart="16dp">
+                    android:paddingStart="12dp">
 
                     <TextView
                         android:id="@+id/titulo_libro_3"
@@ -372,7 +374,7 @@
                         android:layout_height="wrap_content"
                         android:text="El Reto"
                         android:textColor="#D3C8B9"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -381,45 +383,46 @@
                         android:layout_height="wrap_content"
                         android:text="Maria Serrano Burgos y David Sierra Liston"
                         android:textColor="#A79E9C"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/precio_libro_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+                        android:paddingTop="6dp"
                         android:text="$19.99"
                         android:textColor="#B58863"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="8dp">
+                        android:paddingTop="6dp">
 
                         <Button
                             android:id="@+id/boton_agregar_libro_3"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_agregar_redondeado"
                             android:text="Agregar"
                             android:textColor="#3D4D55"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/boton_ver_detalles_libro_3"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginStart="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_detalles_redondeado"
-                            android:text="Ver Detalles"
+                            android:text="Detalles"
                             android:textColor="#3D4D55"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -431,18 +434,17 @@
             <!-- Libro 4 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="140dp"
+                android:layout_margin="6dp"
                 android:background="@drawable/fondo_item_redondeado_oscuro"
-                android:layout_margin="8dp"
-                android:padding="12dp">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/imagen_libro_4"
-                    android:layout_width="80dp"
-                    android:layout_height="110dp"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/borde_redondeado_imagen"
                     app:srcCompat="@drawable/libro4"
                     tools:srcCompat="@drawable/libro4" />
 
@@ -451,7 +453,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:paddingStart="16dp">
+                    android:paddingStart="12dp">
 
                     <TextView
                         android:id="@+id/titulo_libro_4"
@@ -459,54 +461,55 @@
                         android:layout_height="wrap_content"
                         android:text="Dracula"
                         android:textColor="#D3C8B9"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/autor_libro_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Bran Stoker"
+                        android:text="Bram Stoker"
                         android:textColor="#A79E9C"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/precio_libro_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingTop="6dp"
                         android:text="$19.99"
                         android:textColor="#B58863"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:paddingTop="8dp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="36dp"
                         android:orientation="horizontal"
-                        android:paddingTop="8dp">
+                        android:paddingTop="6dp">
 
                         <Button
                             android:id="@+id/boton_agregar_libro_4"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_agregar_redondeado"
                             android:text="Agregar"
                             android:textColor="#3D4D55"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/boton_ver_detalles_libro_4"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="32dp"
                             android:layout_marginStart="4dp"
+                            android:layout_weight="1"
                             android:background="@drawable/boton_detalles_redondeado"
-                            android:text="Ver Detalles"
+                            android:text="Detalles"
                             android:textColor="#3D4D55"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -524,28 +527,30 @@
         android:layout_height="wrap_content"
         android:background="#3D4D55"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="12dp">
 
         <Button
             android:id="@+id/boton_ver_carrito"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="6dp"
             android:background="@drawable/boton_pie_redondeado"
             android:text="Ver Carrito"
             android:textColor="#3D4D55"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/boton_volver_inicio"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/boton_pie_redondeado"
             android:text="Volver al Inicio"
             android:textColor="#3D4D55"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
     </LinearLayout>
