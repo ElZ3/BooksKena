@@ -11,11 +11,33 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="107dp" />
+        android:layout_height="156dp" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="474dp"
-        app:srcCompat="@drawable/logofondo" />
+        android:layout_height="269dp"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="319dp"
+            android:layout_height="385dp"
+            app:srcCompat="@drawable/logoapp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:fontFamily="@font/montserrat_alternates_bold_italic"
+        android:text="Books Kena"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp" />
+
 </LinearLayout>

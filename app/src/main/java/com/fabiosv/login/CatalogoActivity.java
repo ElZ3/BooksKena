@@ -1,7 +1,8 @@
 package com.fabiosv.login;
 
 import android.app.Dialog;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -23,11 +24,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.ui.PlayerView;
+
 public class CatalogoActivity extends AppCompatActivity {
 
     private LinearLayout contenedorPrincipal;
-    private TextView tituloBienvenida;
-    private TextView subtituloBienvenida;
+    private ImageView logoApp;
+    private ImageView contactoCreador;
     private EditText campoBuscar;
     private Button botonBuscar;
     private Button botonVolverInicio;
@@ -36,6 +42,12 @@ public class CatalogoActivity extends AppCompatActivity {
     // Botones de libros
     private Button botonVerDetalles1, botonVerDetalles2, botonVerDetalles3, botonVerDetalles4;
     private Button botonAgregar1, botonAgregar2, botonAgregar3, botonAgregar4;
+
+    // Botones de categorías
+    private Button botonFiccion, botonPoesia, botonMisterio, botonRomance, botonBiografias;
+
+    // Reproductor de video
+    private ExoPlayer videoPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +69,19 @@ public class CatalogoActivity extends AppCompatActivity {
 
     private void inicializarVistas() {
         contenedorPrincipal = findViewById(R.id.catalogo_libros_principal);
-        tituloBienvenida = findViewById(R.id.titulo_bienvenida);
-        subtituloBienvenida = findViewById(R.id.subtitulo_bienvenida);
+        logoApp = findViewById(R.id.logo_app);
+        contactoCreador = findViewById(R.id.contacto_creador);
         campoBuscar = findViewById(R.id.campo_buscar_libros);
         botonBuscar = findViewById(R.id.boton_buscar);
         botonVolverInicio = findViewById(R.id.boton_volver_inicio);
         botonVerCarrito = findViewById(R.id.boton_ver_carrito);
+
+        // Inicializar botones de categorías
+        botonFiccion = findViewById(R.id.boton_ficcion);
+        botonPoesia = findViewById(R.id.boton_poesia);
+        botonMisterio = findViewById(R.id.boton_misterio);
+        botonRomance = findViewById(R.id.boton_romance);
+        botonBiografias = findViewById(R.id.boton_biografias);
 
         // Inicializar botones de libros
         botonVerDetalles1 = findViewById(R.id.boton_ver_detalles_libro_1);
@@ -82,24 +101,20 @@ public class CatalogoActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             Animation slideDown = AnimationUtils.loadAnimation(this, R.anim.slide_in_down);
-            tituloBienvenida.startAnimation(slideDown);
-
-            new Handler().postDelayed(() -> {
-                Animation fadeInSubtitulo = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-                subtituloBienvenida.startAnimation(fadeInSubtitulo);
-            }, 200);
+            logoApp.startAnimation(slideDown);
+            contactoCreador.startAnimation(slideDown);
 
             new Handler().postDelayed(() -> {
                 Animation slideUpSearch = AnimationUtils.loadAnimation(this, R.anim.slide_in_up);
                 campoBuscar.startAnimation(slideUpSearch);
                 botonBuscar.startAnimation(slideUpSearch);
-            }, 400);
+            }, 200);
 
             new Handler().postDelayed(() -> {
                 Animation scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
                 botonVolverInicio.startAnimation(scaleUp);
                 botonVerCarrito.startAnimation(scaleUp);
-            }, 600);
+            }, 400);
 
         }, 300);
     }
@@ -144,6 +159,21 @@ public class CatalogoActivity extends AppCompatActivity {
             }
         });
 
+        // Configurar imágenes del header
+        logoApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CatalogoActivity.this, "Logo de la aplicación", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        contactoCreador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CatalogoActivity.this, "Contacto del desarrollador", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         configurarBotonesCategorias();
         configurarBotonesLibros();
     }
@@ -185,7 +215,6 @@ public class CatalogoActivity extends AppCompatActivity {
                         "Las Aventuras de Nico y Nacho: El Misterio de la Laguna",
                         "Pablo Herrera R.",
                         "$18.99",
-                        "Únete a Nico y Nacho en esta emocionante aventura donde descubrirán los secretos ocultos en la laguna misteriosa. Una historia llena de amistad, valentía y descubrimientos que cautivará a lectores de todas las edades.",
                         R.drawable.libro1
                 );
             }
@@ -198,7 +227,6 @@ public class CatalogoActivity extends AppCompatActivity {
                         "Visions Of Tomorrow",
                         "Leo Waen",
                         "$22.50",
-                        "Una visión futurista de la humanidad y la tecnología. Explora los límites de la innovación y el impacto de las decisiones humanas en el destino de nuestra civilización.",
                         R.drawable.libro2
                 );
             }
@@ -211,7 +239,6 @@ public class CatalogoActivity extends AppCompatActivity {
                         "El Reto",
                         "Maria Serrano Burgos y David Sierra Liston",
                         "$19.99",
-                        "Una historia inspiradora sobre superación personal y trabajo en equipo. Descubre cómo los desafíos pueden convertirse en las mayores oportunidades de crecimiento.",
                         R.drawable.libro3
                 );
             }
@@ -224,7 +251,6 @@ public class CatalogoActivity extends AppCompatActivity {
                         "Dracula",
                         "Bram Stoker",
                         "$19.99",
-                        "El clásico de terror que definió el género vampírico. Una obra maestra de la literatura gótica que continúa fascinando a generaciones de lectores.",
                         R.drawable.libro4
                 );
             }
@@ -260,7 +286,7 @@ public class CatalogoActivity extends AppCompatActivity {
         });
     }
 
-    private void mostrarDetallesLibro(String titulo, String autor, String precio, String descripcion, int imagenRes) {
+    private void mostrarDetallesLibro(String titulo, String autor, String precio, int imagenRes) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.detalles_libro);
@@ -269,8 +295,26 @@ public class CatalogoActivity extends AppCompatActivity {
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(
                     (int)(getResources().getDisplayMetrics().widthPixels * 0.95),
-                    android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+                    (int)(getResources().getDisplayMetrics().heightPixels * 0.90)
             );
+        }
+
+        // INICIALIZAR VIDEO
+        PlayerView videoFondo = dialog.findViewById(R.id.video_fondo);
+        videoPlayer = new ExoPlayer.Builder(this).build();
+        videoFondo.setPlayer(videoPlayer);
+
+        try {
+            Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.fondodetalle);
+            MediaItem mediaItem = MediaItem.fromUri(videoUri);
+            videoPlayer.setMediaItem(mediaItem);
+            videoPlayer.setRepeatMode(Player.REPEAT_MODE_ALL);
+            videoPlayer.setVolume(0f); // Silenciar
+            videoPlayer.prepare();
+            videoPlayer.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al cargar el video", Toast.LENGTH_SHORT).show();
         }
 
         // Obtener referencias de las vistas del modal
@@ -278,7 +322,6 @@ public class CatalogoActivity extends AppCompatActivity {
         TextView textoTitulo = dialog.findViewById(R.id.texto_titulo_libro_detalles);
         TextView textoAutor = dialog.findViewById(R.id.texto_autor_detalles);
         TextView textoPrecio = dialog.findViewById(R.id.texto_precio_detalles);
-        TextView textoDescripcion = dialog.findViewById(R.id.texto_descripcion_detalles);
         final TextView textoCantidad = dialog.findViewById(R.id.texto_cantidad_detalles);
 
         ImageButton botonCerrar = dialog.findViewById(R.id.boton_cerrar_detalles);
@@ -292,7 +335,6 @@ public class CatalogoActivity extends AppCompatActivity {
         textoTitulo.setText(titulo);
         textoAutor.setText(autor);
         textoPrecio.setText(precio);
-        textoDescripcion.setText(descripcion);
 
         final int[] cantidad = {1};
 
@@ -300,6 +342,7 @@ public class CatalogoActivity extends AppCompatActivity {
         botonCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                liberarReproductorVideo();
                 dialog.dismiss();
             }
         });
@@ -330,6 +373,7 @@ public class CatalogoActivity extends AppCompatActivity {
                 Toast.makeText(CatalogoActivity.this,
                         cantidad[0] + "x " + titulo + " agregado al carrito",
                         Toast.LENGTH_SHORT).show();
+                liberarReproductorVideo();
                 dialog.dismiss();
             }
         });
@@ -340,11 +384,28 @@ public class CatalogoActivity extends AppCompatActivity {
                 Toast.makeText(CatalogoActivity.this,
                         "Comprando " + cantidad[0] + "x " + titulo,
                         Toast.LENGTH_SHORT).show();
+                liberarReproductorVideo();
                 dialog.dismiss();
             }
         });
 
+        // Liberar recursos cuando se cierre el diálogo
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                liberarReproductorVideo();
+            }
+        });
+
         dialog.show();
+    }
+
+    private void liberarReproductorVideo() {
+        if (videoPlayer != null) {
+            videoPlayer.stop();
+            videoPlayer.release();
+            videoPlayer = null;
+        }
     }
 
     private void agregarAlCarritoRapido(String nombreLibro) {
@@ -373,13 +434,20 @@ public class CatalogoActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        liberarReproductorVideo();
         limpiarAnimaciones();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        liberarReproductorVideo();
     }
 
     private void limpiarAnimaciones() {
         contenedorPrincipal.clearAnimation();
-        tituloBienvenida.clearAnimation();
-        subtituloBienvenida.clearAnimation();
+        logoApp.clearAnimation();
+        contactoCreador.clearAnimation();
         campoBuscar.clearAnimation();
         botonBuscar.clearAnimation();
         botonVolverInicio.clearAnimation();
