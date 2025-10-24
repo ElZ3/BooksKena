@@ -68,13 +68,13 @@
             android:textSize="16sp"
             android:gravity="center_vertical" />
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_buscar"
             android:layout_width="120dp"
             android:layout_height="52dp"
             android:layout_marginStart="12dp"
-            android:background="#753C28"
-            android:text="Buscar"
+            android:background="#011724"
+            android:src="@drawable/icon_search"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -241,27 +241,27 @@
                         android:orientation="horizontal"
                         android:paddingTop="16dp">
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/boton_agregar_libro_1"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginEnd="6dp"
                             android:layout_weight="1"
-                            android:background="#753C28"
-                            android:text="Agregar"
+                            android:background=""
+                            android:src="@drawable/icon_addcart"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:gravity="center" />
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/boton_ver_detalles_libro_1"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginStart="6dp"
                             android:layout_weight="1"
-                            android:background="#C76423"
-                            android:text="Detalles"
+                            android:background=""
+                            android:src="@drawable/icon_view"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"
@@ -330,27 +330,27 @@
                         android:orientation="horizontal"
                         android:paddingTop="16dp">
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/boton_agregar_libro_2"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginEnd="6dp"
                             android:layout_weight="1"
-                            android:background="#753C28"
-                            android:text="Agregar"
+                            android:background=""
+                            android:src="@drawable/icon_addcart"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:gravity="center" />
 
-                        <Button
+                        <ImageButton
                             android:id="@+id/boton_ver_detalles_libro_2"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginStart="6dp"
                             android:layout_weight="1"
-                            android:background="#C76423"
-                            android:text="Detalles"
+                            android:background=""
+                            android:src="@drawable/icon_view"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"
