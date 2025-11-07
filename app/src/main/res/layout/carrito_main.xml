@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cart_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#011724">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/section_header_cart"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#011724"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btn_contact_cart"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_icon_button_round"
+            android:src="@drawable/usuario"
+            android:contentDescription="Contactos"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- SEARCH -->
+    <LinearLayout
+        android:id="@+id/section_search_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#072E4A"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/et_search_cart"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/fondo_busqueda_redondeado"
+            android:hint="Buscar en carrito (título)"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#C8C8C8"
+            android:textSize="15sp"/>
+
+        <ImageButton
+            android:id="@+id/btn_search_cart"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/boton_agregar_redondeado"
+            android:src="@drawable/icon_search"
+            android:contentDescription="Buscar"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- LISTA -->
+    <LinearLayout
+        android:id="@+id/section_list_cart"
+        android:layout_width="match_parent"
+        android:layout_height="439dp"
+        android:layout_weight="1"
+        android:background="#0E456E"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cart"
+            android:layout_width="match_parent"
+            android:layout_height="438dp" />
+
+        <TextView
+            android:id="@+id/cart_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Aún no has agregado productos"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- FOOTER -->
+    <LinearLayout
+        android:id="@+id/section_footer_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#011724"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_items"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Items: 0"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtotal: $0.00"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: $0.00"
+                android:textColor="#F9EBD2"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_back_catalog"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/boton_pie_redondeado"
+                android:text="Regresar a Catálogo"
+                android:textColor="#F8F5E6"/>
+
+            <Button
+                android:id="@+id/btn_add_more"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="6dp"
+                android:background="@drawable/boton_pie_redondeado"
+                android:text="Añadir más"
+                android:textColor="#F8F5E6"/>
+
+            <Button
+                android:id="@+id/btn_finish"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/boton_agregar_redondeado"
+                android:text="Finalizar compra"
+                android:textColor="#F8F5E6"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Login</string>
+
+    <string name="desc_contacto">Ir a Contactanos</string>
+    <string name="desc_prev">Anterior</string>
+    <string name="desc_next">Siguiente</string>
+
+    <string name="titulo_bienvenida">¡Bienvenido a Books Kena!</string>
+    <string name="descripcion_bienvenida">Tu tienda de libros y poemas con las historias más intrigantes. Explora, descubre y disfruta.</string>
+
+    <string name="btn_ir_catalogo">Ir a Catálogo</string>
+    <string name="btn_cerrar_sesion">Cerrar Sesión</string>
+    <string name="btn_acerca">Acerca de Nosotros</string>
+
+    <string name="desc_add_cart">Agregar al carrito</string>
+    <string name="desc_view_details">Ver detalles</string>
+    <string name="desc_category_ficcion">Filtrar por Ficción</string>
+    <string name="desc_category_poesia">Filtrar por Poesía</string>
+    <string name="desc_category_misterio">Filtrar por Misterio</string>
+    <string name="desc_category_romance">Filtrar por Romance</string>
+    <string name="desc_category_biografias">Filtrar por Biografías</string>
+
+
 </resources>

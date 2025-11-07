@@ -16,4 +16,11 @@
     <color name="color_on_surface_muted">#D6CCC2</color>
     <color name="color_on_primary">#201207</color>
     <color name="color_overlay_dim">#66141824</color>
+    <color name="bk_blue_night">#072740</color>     <!-- fondo dominante -->
+    <color name="bk_blue">#1F4B73</color>           <!-- azul medio -->
+    <color name="bk_ivory">#F8F5E6</color>          <!-- marfil (textos/contraste) -->
+    <color name="bk_orange">#E87722</color>         <!-- secundario -->
+    <color name="bk_brown">#5A4032</color>          <!-- terciario -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

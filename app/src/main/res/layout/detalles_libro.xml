@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#011724">
@@ -25,8 +24,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +33,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <!-- Header del Modal -->
+            <!-- Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,11 +55,10 @@
                     android:id="@+id/boton_cerrar_detalles"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="#753C28"
+                    android:background="@drawable/bg_icon_button_round"
                     android:src="@android:drawable/ic_menu_close_clear_cancel"
                     android:contentDescription="Cerrar"
                     app:tint="#FFFFFF" />
-
             </LinearLayout>
 
             <View
@@ -69,7 +67,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="#002C45" />
 
-            <!-- Imagen del Libro -->
+            <!-- Portada -->
             <ImageView
                 android:id="@+id/imagen_libro_detalles"
                 android:layout_width="200dp"
@@ -77,16 +75,14 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
                 android:background="#002C45"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/libro1"
-                tools:srcCompat="@drawable/libro1" />
+                android:scaleType="centerCrop" />
 
-            <!-- Nombre del Libro -->
+            <!-- Título / Autor / Precio -->
             <TextView
                 android:id="@+id/texto_titulo_libro_detalles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Las Aventuras de Nico y Nacho: El Misterio de la Laguna"
+                android:text="Título"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -94,38 +90,37 @@
                 android:layout_marginBottom="8dp"
                 android:lineSpacingExtra="6sp" />
 
-            <!-- Autor -->
             <TextView
                 android:id="@+id/texto_autor_detalles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pablo Herrera R."
+                android:text="Autor"
                 android:textSize="16sp"
                 android:textColor="#C8C8C8"
                 android:gravity="center"
                 android:layout_marginBottom="20dp" />
 
-            <!-- Precio -->
             <TextView
                 android:id="@+id/texto_precio_detalles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="$18.99"
+                android:text="$0.00"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="#C76423"
                 android:gravity="center"
                 android:layout_marginBottom="30dp" />
 
-            <!-- Información Adicional -->
+            <!-- Caja de info -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#80002C45"
+                android:background="@drawable/panel_translucido"
                 android:padding="20dp"
                 android:layout_marginBottom="30dp">
 
+                <!-- Disponibilidad -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -148,9 +143,9 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="#C76423" />
-
                 </LinearLayout>
 
+                <!-- Páginas -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,9 +167,9 @@
                         android:text="128 páginas"
                         android:textSize="16sp"
                         android:textColor="#C8C8C8" />
-
                 </LinearLayout>
 
+                <!-- Género -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -195,12 +190,10 @@
                         android:text="Aventura Infantil"
                         android:textSize="16sp"
                         android:textColor="#C8C8C8" />
-
                 </LinearLayout>
-
             </LinearLayout>
 
-            <!-- Selector de Cantidad -->
+            <!-- Cantidad -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,7 +214,7 @@
                     android:id="@+id/boton_disminuir_cantidad"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:background="#753C28"
+                    android:background="@drawable/bg_icon_button_round"
                     android:text="-"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
@@ -244,15 +237,14 @@
                     android:id="@+id/boton_aumentar_cantidad"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:background="#753C28"
+                    android:background="@drawable/bg_icon_button_round"
                     android:text="+"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
 
-            <!-- Botones de Acción -->
+            <!-- Acciones -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -264,7 +256,7 @@
                     android:layout_height="56dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="10dp"
-                    android:background="#753C28"
+                    android:background="@drawable/boton_pie_redondeado"
                     android:text="Agregar al Carrito"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -277,16 +269,13 @@
                     android:layout_height="56dp"
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
-                    android:background="#C76423"
+                    android:background="@drawable/boton_agregar_redondeado"
                     android:text="Comprar Ahora"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"
                     android:gravity="center" />
-
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
-
 </RelativeLayout>

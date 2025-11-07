@@ -1,61 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_principal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/principal_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoapp"
-    android:orientation="vertical">
+    android:background="#FFFFFF">
 
+    <!-- ======= BORDES TIPO AGUA (GridLayouts) ======= -->
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/blobLeft"
+        android:layout_width="220dp"
+        android:layout_height="260dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="-60dp"
+        android:layout_marginTop="-40dp"
+        android:alpha="0.25"
+        android:background="@drawable/blob_primary_left"
+        android:columnCount="2"
+        android:rowCount="2"
+        tools:ignore="GridLayout" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/blobRight"
+        android:layout_width="240dp"
+        android:layout_height="280dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="-70dp"
+        android:layout_marginBottom="-50dp"
+        android:alpha="0.25"
+        android:background="@drawable/blob_primary_right"
+        android:columnCount="2"
+        android:rowCount="2"
+        tools:ignore="GridLayout" />
+
+    <!-- ======= BOTÓN CONTACTO (arriba-derecha) ======= -->
+    <ImageButton
+        android:id="@+id/btnContact"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/desc_contacto"
+        android:tooltipText="@string/desc_contacto"
+        android:src="@drawable/usuario" />
+
+    <!-- ======= CONTENEDOR PRINCIPAL ======= -->
     <LinearLayout
+        android:id="@+id/cardPrincipal"
         android:layout_width="match_parent"
-        android:layout_height="598dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
         android:background="@drawable/rounded_grid"
-        android:orientation="vertical" >
+        android:padding="12dp">
 
-        <androidx.gridlayout.widget.GridLayout
-            android:layout_width="186dp"
-            android:layout_height="288dp"
-            android:background="@drawable/usuario"
-            android:layout_marginLeft="100dp"
-            android:radius="20dp">
+        <!-- ===== CARRUSEL ===== -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="4dp">
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpCarrusel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF" />
 
-        </androidx.gridlayout.widget.GridLayout>
+            <ImageButton
+                android:id="@+id/btnPrev"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical|start"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/desc_prev"
+                android:tooltipText="@string/desc_prev"
+                android:src="@drawable/icon_flechaizquierda" />
 
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical|end"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/desc_next"
+                android:tooltipText="@string/desc_next"
+                android:src="@drawable/icon_flechaderecha" />
+
+            <!-- Dots -->
+            <LinearLayout
+                android:id="@+id/dotsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        </FrameLayout>
+
+        <!-- ===== TEXTOS ===== -->
         <TextView
-            android:id="@+id/BienveUsuario"
+            android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_alternates_bold_italic"
-            android:text="Benvenido ..."
+            android:layout_marginTop="12dp"
+            android:text="¡Bienvenido a Books Kena!"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="34sp"
-            android:layout_marginTop="22dp"/>
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_alternates_bold_italic" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/descripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_alternates_medium"
-            android:text="Disfruta de nuestro catalogo de Libros y descubre nuevas historias que te llenen de intriga o te sorprenda sus versos"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="6dp"
+            android:text="Tu tienda de libros y poemas con las historias más intrigantes. Explora, descubre y disfruta."
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="22dp"/>
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:fontFamily="@font/mandali" />
+
+        <!-- ===== BOTONES PRINCIPALES ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            android:paddingBottom="8dp">
+
+            <Button
+                android:id="@+id/btnCatalogo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/boton_agregar_redondeado"
+                android:text="Ir a Catálogo"
+                android:textColor="#F8F5E6"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/boton_agregar_redondeado"
+                android:text="Cerrar Sesión"
+                android:textColor="#F8F5E6"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="335dp"
+            android:id="@+id/btnAcerca"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="#91BAFB"
-            android:padding="15dp"
-            android:text="Ir a Catalogo"
-            android:textSize="20dp"
-            app:rippleColor="@color/black" />
+            android:background="@drawable/boton_agregar_redondeado"
+            android:text="Acerca de Nosotros"
+            android:textColor="#F8F5E6"
+            android:textSize="16sp" />
 
     </LinearLayout>
-</LinearLayout>
+
+</FrameLayout>

@@ -3,7 +3,6 @@ package com.fabiosv.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -34,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.login_activity);
 
-        // Ajuste de insets (barra de estado y navegación)
+        // Ajuste de insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.splash), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -57,29 +56,42 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void configurarAnimacionesEntrada() {
+        // 1) Fondo se desvanece
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         contenedorPrincipal.startAnimation(fadeIn);
 
+        // 2) El grid sube (entrada principal)
         new Handler().postDelayed(() -> {
-            Animation fadeInImagen = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-            imagenLibro.startAnimation(fadeInImagen);
-            Animation slideUpGrid = AnimationUtils.loadAnimation(this, R.anim.slide_in_up);
-            gridLayoutLogin.startAnimation(slideUpGrid);
+            Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_in_up);
+            gridLayoutLogin.startAnimation(slideUp);
+        }, 150);
 
-        }, 300);
+        // 3) Pop secuencial para cada hijo del grid (imagen, inputs, checkbox, botón, etc.)
+        new Handler().postDelayed(() -> {
+            Animation pop = AnimationUtils.loadAnimation(this, R.anim.card_pop_in);
+            imagenLibro.startAnimation(pop);
+
+            // Anima a todos los hijos del grid con un pequeño offset
+            int count = gridLayoutLogin.getChildCount();
+            long delayStep = 90;
+            for (int i = 0; i < count; i++) {
+                final int index = i;
+                new Handler().postDelayed(() -> {
+                    if (gridLayoutLogin.getChildAt(index) != imagenLibro) {
+                        gridLayoutLogin.getChildAt(index).startAnimation(
+                                AnimationUtils.loadAnimation(this, R.anim.card_pop_in)
+                        );
+                    }
+                }, (index + 1) * delayStep);
+            }
+        }, 280);
     }
 
     private void configurarBotonLogin() {
-        btnIniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Animación de click en el botón
-                Animation escalaClick = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.scale_click);
-                btnIniciar.startAnimation(escalaClick);
-                new Handler().postDelayed(() -> {
-                    validarLogin();
-                }, 200);
-            }
+        btnIniciar.setOnClickListener(v -> {
+            Animation click = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.scale_click);
+            btnIniciar.startAnimation(click);
+            new Handler().postDelayed(this::validarLogin, 200);
         });
     }
 
@@ -89,7 +101,6 @@ public class LoginActivity extends AppCompatActivity {
             public void handleOnBackPressed() {
                 Animation slideOut = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.slide_out_right);
                 contenedorPrincipal.startAnimation(slideOut);
-
                 new Handler().postDelayed(() -> {
                     finish();
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -105,42 +116,30 @@ public class LoginActivity extends AppCompatActivity {
         if (usuario.isEmpty()) {
             editUsuario.setError("Ingrese el usuario");
             editUsuario.requestFocus();
-
-            // Animación de shake para campo vacío
-            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-            editUsuario.startAnimation(shake);
+            editUsuario.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake));
             return;
         }
 
         if (password.isEmpty()) {
             editPassword.setError("Ingrese la contraseña");
             editPassword.requestFocus();
-
-            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-            editPassword.startAnimation(shake);
+            editPassword.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake));
             return;
         }
 
         if (usuario.equals("admin") && password.equals("123")) {
             Toast.makeText(this, "Login exitoso", Toast.LENGTH_SHORT).show();
-
-            Animation successScale = AnimationUtils.loadAnimation(this, R.anim.scale_up);
-            gridLayoutLogin.startAnimation(successScale);
+            gridLayoutLogin.startAnimation(AnimationUtils.loadAnimation(this, R.anim.scale_up));
 
             new Handler().postDelayed(() -> {
-                Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
-                intent.putExtra("usuario", usuario);
-                startActivity(intent);
-
+                Intent i = new Intent(LoginActivity.this, PrincipalActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                finish();
-            }, 400);
-
-        } else {
+            }, 420);
+        }  else {
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-            Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-            gridLayoutLogin.startAnimation(shake);
+            gridLayoutLogin.startAnimation(AnimationUtils.loadAnimation(this, R.anim.shake));
         }
     }
 
@@ -155,5 +154,7 @@ public class LoginActivity extends AppCompatActivity {
         imagenLibro.clearAnimation();
         gridLayoutLogin.clearAnimation();
         btnIniciar.clearAnimation();
+        editUsuario.clearAnimation();
+        editPassword.clearAnimation();
     }
 }
