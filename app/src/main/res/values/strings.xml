@@ -19,6 +19,7 @@
     <string name="desc_category_misterio">Filtrar por Misterio</string>
     <string name="desc_category_romance">Filtrar por Romance</string>
     <string name="desc_category_biografias">Filtrar por Biografías</string>
+    <string name="imagen_carrusel">Imagen de carrusel\n</string>
 
 
 </resources>

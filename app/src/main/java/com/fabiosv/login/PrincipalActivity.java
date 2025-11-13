@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.gridlayout.widget.GridLayout;   // <-- IMPORTANTE
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
@@ -21,16 +22,16 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private ViewPager2 vpCarrusel;
     private ImageButton btnPrev, btnNext, btnContact;
-    private LinearLayout dotsContainer, cardPrincipal, blobLeft, blobRight;
+    private LinearLayout dotsContainer, cardPrincipal;
+    private GridLayout blobLeft, blobRight;     // <-- tipos correctos
     private TextView titulo, descripcion;
 
     private CarouselAdapter adapter;
     private final Handler autoHandler = new Handler();
-    private final long AUTO_DELAY = 3000; // 3s
+    private static final long AUTO_DELAY = 3000L; // 3s
 
     private final Runnable autoRunnable = new Runnable() {
-        @Override
-        public void run() {
+        @Override public void run() {
             if (adapter == null || adapter.getItemCount() == 0) return;
             int next = (vpCarrusel.getCurrentItem() + 1) % adapter.getItemCount();
             vpCarrusel.setCurrentItem(next, true);
@@ -52,16 +53,16 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        vpCarrusel = findViewById(R.id.vpCarrusel);
-        btnPrev = findViewById(R.id.btnPrev);
-        btnNext = findViewById(R.id.btnNext);
-        btnContact = findViewById(R.id.btnContact);
-        dotsContainer = findViewById(R.id.dotsContainer);
-        cardPrincipal = findViewById(R.id.cardPrincipal);
-        blobLeft = findViewById(R.id.blobLeft);
-        blobRight = findViewById(R.id.blobRight);
-        titulo = findViewById(R.id.titulo);
-        descripcion = findViewById(R.id.descripcion);
+        vpCarrusel   = findViewById(R.id.vpCarrusel);
+        btnPrev      = findViewById(R.id.btnPrev);
+        btnNext      = findViewById(R.id.btnNext);
+        btnContact   = findViewById(R.id.btnContact);
+        dotsContainer= findViewById(R.id.dotsContainer);
+        cardPrincipal= findViewById(R.id.cardPrincipal);
+        blobLeft     = findViewById(R.id.blobLeft);   // <-- ya no castea a LinearLayout
+        blobRight    = findViewById(R.id.blobRight);  // <--
+        titulo       = findViewById(R.id.titulo);
+        descripcion  = findViewById(R.id.descripcion);
     }
 
     private void setupBlobsFloat() {
@@ -72,16 +73,15 @@ public class PrincipalActivity extends AppCompatActivity {
         floatSoft2.setStartOffset(600);
         blobRight.startAnimation(floatSoft2);
 
-        // Contenedor principal “flotando” muy sutil
         Animation floatCard = AnimationUtils.loadAnimation(this, R.anim.float_soft);
         floatCard.setDuration(2800);
         cardPrincipal.startAnimation(floatCard);
     }
 
     private void setupCarousel() {
-        // Construimos los ítems (carrusel1 es video, 2-5 imágenes)
+        // carrusel1 es VIDEO: debe estar en /res/raw como carrusel1.mp4 (R.raw.carrusel1)
         List<CarouselAdapter.CarouselItem> items = new ArrayList<>();
-        items.add(CarouselAdapter.CarouselItem.video(resToUri(R.raw.carrusel1))); // si tu video está en raw, cambia a R.raw.carrusel1
+        items.add(CarouselAdapter.CarouselItem.video(resToUri(R.raw.carrusel1)));
         items.add(CarouselAdapter.CarouselItem.image(R.drawable.carrusel2));
         items.add(CarouselAdapter.CarouselItem.image(R.drawable.carrusel3));
         items.add(CarouselAdapter.CarouselItem.image(R.drawable.carrusel4));
@@ -91,16 +91,13 @@ public class PrincipalActivity extends AppCompatActivity {
         vpCarrusel.setAdapter(adapter);
         vpCarrusel.setOffscreenPageLimit(1);
 
-        // Indicadores
         buildDots(items.size());
         vpCarrusel.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override public void onPageSelected(int position) { selectDot(position); }
         });
 
-        // Auto-rotación
         autoHandler.postDelayed(autoRunnable, AUTO_DELAY);
 
-        // Controles manuales
         btnPrev.setOnClickListener(v -> {
             pauseAuto();
             int prev = vpCarrusel.getCurrentItem() - 1;
@@ -108,6 +105,7 @@ public class PrincipalActivity extends AppCompatActivity {
             vpCarrusel.setCurrentItem(prev, true);
             resumeAuto();
         });
+
         btnNext.setOnClickListener(v -> {
             pauseAuto();
             int next = (vpCarrusel.getCurrentItem() + 1) % adapter.getItemCount();
@@ -150,7 +148,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
         findViewById(R.id.btnCerrarSesion).setOnClickListener(v -> {
             pauseAuto();
-            // Limpia sesión como lo manejes; por ahora, regresamos al Login
             Intent i = new Intent(this, LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
@@ -160,20 +157,20 @@ public class PrincipalActivity extends AppCompatActivity {
 
         findViewById(R.id.btnAcerca).setOnClickListener(v -> {
             pauseAuto();
+            // Si aún no tienes ContactoActivity, comenta estas dos líneas para evitar crash.
             startActivity(new Intent(this, ContactoActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
         btnContact.setOnClickListener(v -> {
-            // Placeholder para tu futura ContactanosActivity
             pauseAuto();
+            // Igual que arriba: solo si ya existe ContactoActivity.
             startActivity(new Intent(this, ContactoActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 
     private void enterAnimations() {
-        // Entrada tipo Canva
         cardPrincipal.startAnimation(AnimationUtils.loadAnimation(this, R.anim.card_pop_in));
         titulo.startAnimation(AnimationUtils.loadAnimation(this, R.anim.card_pop_in));
         descripcion.startAnimation(AnimationUtils.loadAnimation(this, R.anim.card_pop_in));
@@ -182,15 +179,6 @@ public class PrincipalActivity extends AppCompatActivity {
     private void pauseAuto() { autoHandler.removeCallbacks(autoRunnable); }
     private void resumeAuto() { autoHandler.postDelayed(autoRunnable, AUTO_DELAY); }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        resumeAuto();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        pauseAuto();
-    }
+    @Override protected void onResume() { super.onResume(); resumeAuto(); }
+    @Override protected void onPause()  { super.onPause();  pauseAuto();  }
 }

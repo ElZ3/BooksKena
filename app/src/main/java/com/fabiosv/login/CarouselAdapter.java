@@ -52,22 +52,6 @@ public class CarouselAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder h, int position) {
-        CarouselItem it = items.get(position);
-        if (getItemViewType(position) == 1) {
-            VideoVH vh = (VideoVH) h;
-            vh.video.setVideoURI(it.videoUri);
-            vh.video.setOnPreparedListener(mp -> {
-                mp.setLooping(true);
-                vh.video.start();
-            });
-        } else {
-            ImageVH ih = (ImageVH) h;
-            ih.img.setImageResource(it.imageRes);
-        }
-    }
-
     @Override public int getItemCount() { return items.size(); }
 
     static class ImageVH extends RecyclerView.ViewHolder {
@@ -85,4 +69,26 @@ public class CarouselAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             video = itemView.findViewById(R.id.carouselVideo);
         }
     }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder h, int position) {
+        CarouselItem it = items.get(position);
+
+        if (getItemViewType(position) == 1) {
+            VideoVH vh = (VideoVH) h;
+            vh.video.setVideoURI(it.videoUri);
+            vh.video.setOnPreparedListener(mp -> {
+                mp.setLooping(true);
+                mp.setVideoScalingMode(android.media.MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
+                vh.video.start();
+            });
+        } else {
+            ImageVH ih = (ImageVH) h;
+            ih.img.setImageResource(it.imageRes);
+            ih.img.setScaleType(ImageView.ScaleType.CENTER_INSIDE); // respeta proporción, sin cortes
+            ih.img.setAdjustViewBounds(true);
+            ih.img.setBackgroundColor(android.graphics.Color.WHITE);
+        }
+    }
+
 }

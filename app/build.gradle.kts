@@ -45,4 +45,5 @@ dependencies {
     implementation("com.google.android.exoplayer:exoplayer-core:2.18.7")
     implementation("com.google.android.exoplayer:exoplayer-ui:2.18.7")
     implementation("com.google.android.exoplayer:exoplayer-hls:2.18.7")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
 }
