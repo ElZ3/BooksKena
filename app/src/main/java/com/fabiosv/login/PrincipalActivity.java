@@ -59,8 +59,8 @@ public class PrincipalActivity extends AppCompatActivity {
         btnContact   = findViewById(R.id.btnContact);
         dotsContainer= findViewById(R.id.dotsContainer);
         cardPrincipal= findViewById(R.id.cardPrincipal);
-        blobLeft     = findViewById(R.id.blobLeft);   // <-- ya no castea a LinearLayout
-        blobRight    = findViewById(R.id.blobRight);  // <--
+        blobLeft     = findViewById(R.id.blobLeft);
+        blobRight    = findViewById(R.id.blobRight);
         titulo       = findViewById(R.id.titulo);
         descripcion  = findViewById(R.id.descripcion);
     }
